@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'InterTightLight';
+  src: url('/src/assets/fonts/InterTightLight.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'InterTightSemiBold';
+  src: url('/src/assets/fonts/InterTightSemiBold.ttf') format('ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MangoGrotesqueBold';
+  src: url('/src/assets/fonts/MangoGrotesqueBold.ttf') format('ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
