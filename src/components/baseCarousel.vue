@@ -12,7 +12,7 @@
       class="carouselGrid"
       style="height: 100% !important"
     >
-      <Carousel>
+      <Carousel ref="carousel">
         <Slide v-for="slide in 3" :key="slide">
           <div
             class="carousel__item relative bg-[url('/src/assets/images/our-work/slide-01.png')] bg-no-repeat bg-cover"
@@ -28,7 +28,11 @@
               class="flex items-end w-full overflow-hidden"
             >
               <div class="flex-1 px-[30px] py-[30px]">
-                <CarouselNavigation color="[#FF0000]" />
+                <CarouselNavigation
+                  @next="carousel.next()"
+                  @prev="carousel.prev()"
+                  color="[#FF0000]"
+                />
               </div>
 
               <div
@@ -51,7 +55,11 @@
           <Pagination />
 
           <div v-if="!gridCarousel" class="w-full absolute top-16 left-0 px-9">
-            <CarouselNavigation color="[#FF0000]" />
+            <CarouselNavigation
+              @next="carousel.next()"
+              @prev="carousel.prev()"
+              color="[#FF0000]"
+            />
           </div>
         </template>
       </Carousel>
@@ -60,6 +68,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
 
 import 'vue3-carousel/dist/carousel.css';
@@ -75,6 +84,8 @@ const props = defineProps({
     required: true,
   },
 });
+
+const carousel = ref(null);
 </script>
 
 <style>
