@@ -1,10 +1,18 @@
 <template>
-  <div class="grid grid-cols-2 items-start gap-5 px-5 py-12 h-full">
-    <div v-if="gridCarousel" class="bg-green-800 col-span-1 mt-[10px]">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-      perspiciatis qui at quae suscipit molestiae, mollitia illum adipisci
-      veritatis accusamus ipsam, eaque quasi quibusdam nobis fugit. Debitis
-      laudantium blanditiis recusandae.
+  <div class="grid grid-cols-2 items-start gap-14 px-9 py-12 h-full">
+    <div v-if="gridCarousel" class="col-span-1 mt-[10px] h-full">
+      <div
+        class="text-[#D9D9D9] font-InterTightSemiBold text-[44px] font-semibold leading-[47px] h-full flex flex-col justify-between"
+      >
+        <div
+          v-html="data[carousel?.data?.currentSlide.value]?.brief"
+          class="uppercase"
+        ></div>
+
+        <div class="font-InterTightLight text-4xl">
+          <div v-html="data[carousel?.data?.currentSlide.value]?.text"></div>
+        </div>
+      </div>
     </div>
 
     <div
@@ -13,10 +21,17 @@
       style="height: 100% !important"
     >
       <Carousel ref="carousel">
-        <Slide v-for="slide in 3" :key="slide">
+        <Slide v-for="slide in data" :key="slide">
           <div
-            class="carousel__item relative bg-[url('/src/assets/images/our-work/slide-01.png')] bg-no-repeat bg-cover"
-          ></div>
+            class="carousel__item relative bg-no-repeat bg-cover"
+            :style="{ backgroundImage: `url(${slide.image})` }"
+          >
+            <div
+              v-if="!gridCarousel"
+              class="absolute bottom-5 left-5 w-1/2 max-w-[800px] text-left font-InterTightLight text-base font-light"
+              v-html="slide.text"
+            ></div>
+          </div>
         </Slide>
 
         <template #addons>
@@ -32,23 +47,30 @@
                   @next="carousel.next()"
                   @prev="carousel.prev()"
                   color="[#FF0000]"
+                  :current-slide="carousel?.data?.currentSlide.value + 1"
                 />
               </div>
 
               <div
-                class="text-[110px] uppercase pl-[30px] translate-y-[50px]"
+                class="text-[110px] uppercase pl-[30px] translate-y-7 text-left pt-[30px] max-w-[400px]"
                 :class="fragmentColor"
               >
-                <div class="text-[#D9D9D9]">City mall</div>
+                <div
+                  v-html="data[carousel?.data?.currentSlide.value]?.title"
+                  class="text-[#D9D9D9] leading-[120px]"
+                ></div>
               </div>
             </div>
 
             <div
               v-else
-              class="absolute bottom-0 right-0 text-[110px] uppercase pl-[30px] translate-y-[50px]"
+              class="absolute bottom-0 -right-1 text-[110px] uppercase pl-[30px] translate-y-7 max-w-[600px] text-left pt-[30px]"
               :class="fragmentColor"
             >
-              <div class="text-[#D9D9D9]">City mall</div>
+              <div
+                v-html="data[carousel?.data?.currentSlide.value]?.title"
+                class="text-[#D9D9D9] leading-[120px]"
+              ></div>
             </div>
           </div>
 
@@ -58,7 +80,8 @@
             <CarouselNavigation
               @next="carousel.next()"
               @prev="carousel.prev()"
-              color="[#FF0000]"
+              color="black"
+              :current-slide="carousel?.data?.currentSlide.value + 1"
             />
           </div>
         </template>
@@ -81,6 +104,10 @@ const props = defineProps({
   },
   fragmentColor: {
     type: String,
+    required: true,
+  },
+  data: {
+    type: Array,
     required: true,
   },
 });

@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-between items-center">
     <div class="font-MangoGrotesqueBold text-4xl" :class="`text-${color}`">
-      01
+      0{{ currentSlide }}
     </div>
 
     <div class="flex gap-2 text-white text-lg">
@@ -28,6 +28,11 @@ defineProps({
   color: {
     type: String,
     required: true,
+  },
+  currentSlide: {
+    type: Number,
+    required: true,
+    default: 0,
   },
 });
 </script>
