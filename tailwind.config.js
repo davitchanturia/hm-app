@@ -11,6 +11,9 @@ export default {
         InterTightSemiBold: ['InterTightSemiBold'],
         MangoGrotesqueBold: ['MangoGrotesqueBold'],
       },
+      screens: {
+        custom: '960px',
+      },
     },
   },
   plugins: [],
