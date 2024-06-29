@@ -1,7 +1,7 @@
 <template>
   <button
     @click="navigateToSection('1')"
-    class="uppercase text-[#FF0000] text-[190px] block"
+    class="uppercase text-[#FF0000] text-6xl md:text-[160px] lg:text-[150px] 3xl:text-[280px] block text-left"
   >
     <span class="text-black">our </span>
     <slot />

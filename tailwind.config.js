@@ -13,6 +13,7 @@ export default {
       },
       screens: {
         custom: '960px',
+        '3xl': '1720px',
       },
     },
   },
