@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex flex-col-reverse lg:flex-row items-start gap-14 px-9 py-12 h-full"
+    class="flex flex-col-reverse lg:flex-row items-start gap-14 px-5 md:px-9 py-12 h-full"
   >
-    <div v-if="gridCarousel" class="col-span-1 mt-[10px] h-full">
+    <div v-if="gridCarousel" class="w-full lg:w-1/2 mt-[10px] h-full">
       <div
         class="text-[#D9D9D9] font-InterTightSemiBold lg:text-[32px] 3xl:text-[44px] font-semibold leading-none lg:leading-[47px] h-full flex flex-col gap-10 lg:gap-0 lg:justify-between"
       >
@@ -18,7 +18,7 @@
     </div>
 
     <div
-      :class="gridCarousel ? 'col-span-1' : 'col-span-2'"
+      :class="gridCarousel ? 'w-full lg:w-1/2' : 'w-full'"
       class="carouselGrid"
       style="height: 100% !important"
     >
