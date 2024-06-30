@@ -1,15 +1,17 @@
 <template>
-  <div class="grid grid-cols-2 items-start gap-14 px-9 py-12 h-full">
+  <div
+    class="flex flex-col-reverse lg:flex-row items-start gap-14 px-9 py-12 h-full"
+  >
     <div v-if="gridCarousel" class="col-span-1 mt-[10px] h-full">
       <div
-        class="text-[#D9D9D9] font-InterTightSemiBold text-[44px] font-semibold leading-[47px] h-full flex flex-col justify-between"
+        class="text-[#D9D9D9] font-InterTightSemiBold lg:text-[32px] 3xl:text-[44px] font-semibold leading-none lg:leading-[47px] h-full flex flex-col gap-10 lg:gap-0 lg:justify-between"
       >
         <div
           v-html="data[carousel?.data?.currentSlide.value]?.brief"
           class="uppercase"
         ></div>
 
-        <div class="font-InterTightLight text-4xl">
+        <div class="font-InterTightLight lg:text-2xl 3xl:text-4xl">
           <div v-html="data[carousel?.data?.currentSlide.value]?.text"></div>
         </div>
       </div>
@@ -22,13 +24,11 @@
     >
       <Carousel ref="carousel">
         <Slide v-for="slide in data" :key="slide">
-          <div
-            class="carousel__item relative bg-no-repeat bg-cover"
-            :style="{ backgroundImage: `url(${slide.image})` }"
-          >
+          <div class="carousel__item relative">
+            <img :src="slide.image" class="w-full h-full object-cover" />
             <div
               v-if="!gridCarousel"
-              class="absolute bottom-5 left-5 w-1/2 max-w-[800px] text-left font-InterTightLight text-base font-light"
+              class="absolute top-36 md:bottom-5 left-5 pr-10 w-full lg:w-1/2 max-w-[800px] text-left font-InterTightLight text-base font-light"
               v-html="slide.text"
             ></div>
           </div>
@@ -43,33 +43,35 @@
               class="flex items-end w-full overflow-hidden"
             >
               <div class="flex-1 px-[30px] py-[30px]">
-                <CarouselNavigation
-                  @next="carousel.next()"
-                  @prev="carousel.prev()"
-                  color="[#FF0000]"
-                  :current-slide="carousel?.data?.currentSlide.value + 1"
-                />
+                <div class="w-full hidden lg:block">
+                  <CarouselNavigation
+                    @next="carousel.next()"
+                    @prev="carousel.prev()"
+                    color="[#FF0000]"
+                    :current-slide="carousel?.data?.currentSlide.value + 1"
+                  />
+                </div>
               </div>
 
               <div
-                class="text-[110px] uppercase pl-[30px] translate-y-7 text-left pt-[30px] max-w-[400px]"
+                class="text-3xl lg:text-6xl 3xl:text-[110px] uppercase pl-3 lg:pl-[30px] lg:translate-y-7 text-left pt-3 lg:pt-[30px] max-w-40 md:max-w-[400px]"
                 :class="fragmentColor"
               >
                 <div
                   v-html="data[carousel?.data?.currentSlide.value]?.title"
-                  class="text-[#D9D9D9] leading-[120px]"
+                  class="text-[#D9D9D9] leading-none lg:leading-[120px]"
                 ></div>
               </div>
             </div>
 
             <div
               v-else
-              class="absolute bottom-0 -right-1 text-[110px] uppercase pl-[30px] translate-y-7 max-w-[600px] text-left pt-[30px]"
+              class="absolute bottom-0 -right-1 text-3xl lg:text-6xl 3xl:text-[110px] uppercase pl-3 lg:pl-[30px] lg:translate-y-7 max-w-56 md:max-w-[600px] text-left pt-3 lg:pt-[30px]"
               :class="fragmentColor"
             >
               <div
                 v-html="data[carousel?.data?.currentSlide.value]?.title"
-                class="text-[#D9D9D9] leading-[120px]"
+                class="text-[#D9D9D9] leading-none lg:leading-[120px]"
               ></div>
             </div>
           </div>
@@ -81,6 +83,18 @@
               @next="carousel.next()"
               @prev="carousel.prev()"
               color="black"
+              :current-slide="carousel?.data?.currentSlide.value + 1"
+            />
+          </div>
+
+          <div
+            v-else
+            class="w-full absolute top-16 left-0 px-9 block lg:hidden"
+          >
+            <CarouselNavigation
+              @next="carousel.next()"
+              @prev="carousel.prev()"
+              color="[#FF0000]"
               :current-slide="carousel?.data?.currentSlide.value + 1"
             />
           </div>
@@ -136,7 +150,7 @@ const carousel = ref(null);
 }
 
 .carousel__item {
-  /* max-height: 100%; */
+  /* min-height: 518px !important; */
   height: 100%;
   width: 100%;
   background-color: white !important;

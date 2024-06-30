@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-full h-screen bg-gray-navigation font-MangoGrotesqueBold text-9xl py-7 md:py-10 lg:py-[76px] pl-[10px] md:pl-5 lg:pl-10 flex flex-col justify-end lg:justify-start"
+    class="w-full h-screen bg-gray-navigation font-MangoGrotesqueBold py-7 md:py-10 lg:py-[76px] pl-[10px] md:pl-5 lg:pl-10 flex flex-col justify-end lg:justify-start"
   >
     <NavigationItem sectionId="1">projects</NavigationItem>
     <NavigationItem sectionId="2">works</NavigationItem>
