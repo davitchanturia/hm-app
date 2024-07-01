@@ -2,20 +2,26 @@
   <div
     class="flex flex-col-reverse lg:flex-row items-start gap-14 px-5 md:px-9 py-12 h-full"
   >
-    <div v-if="gridCarousel" class="w-full lg:w-1/2 mt-[10px] h-full">
+    <transition name="fade" mode="out-in">
       <div
-        class="text-[#D9D9D9] font-InterTightSemiBold lg:text-[32px] 3xl:text-[44px] font-semibold leading-none lg:leading-[47px] h-full flex flex-col gap-10 lg:gap-0 lg:justify-between"
+        v-if="gridCarousel"
+        class="w-full lg:w-1/2 mt-[10px] h-full"
+        :key="carousel?.data?.currentSlide.value"
       >
         <div
-          v-html="data[carousel?.data?.currentSlide.value]?.brief"
-          class="uppercase"
-        ></div>
+          class="text-[#D9D9D9] font-InterTightSemiBold lg:text-[32px] 3xl:text-[44px] font-semibold leading-none lg:leading-[47px] h-full flex flex-col gap-10 lg:gap-0 lg:justify-between"
+        >
+          <div
+            v-html="data[carousel?.data?.currentSlide.value]?.brief"
+            class="uppercase"
+          ></div>
 
-        <div class="font-InterTightLight lg:text-2xl 3xl:text-4xl">
-          <div v-html="data[carousel?.data?.currentSlide.value]?.text"></div>
+          <div class="font-InterTightLight lg:text-2xl 3xl:text-4xl">
+            <div v-html="data[carousel?.data?.currentSlide.value]?.text"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
 
     <div
       :class="gridCarousel ? 'w-full lg:w-1/2' : 'w-full'"
@@ -57,10 +63,13 @@
                 class="text-3xl lg:text-6xl 3xl:text-[110px] uppercase pl-3 lg:pl-[30px] lg:translate-y-7 text-left pt-3 lg:pt-[30px] max-w-40 md:max-w-[400px]"
                 :class="fragmentColor"
               >
-                <div
-                  v-html="data[carousel?.data?.currentSlide.value]?.title"
-                  class="text-[#D9D9D9] leading-none lg:leading-[120px]"
-                ></div>
+                <transition name="fade" mode="out-in">
+                  <div
+                    :key="carousel?.data?.currentSlide.value"
+                    v-html="data[carousel?.data?.currentSlide.value]?.title"
+                    class="text-[#D9D9D9] leading-none lg:leading-[120px]"
+                  ></div>
+                </transition>
               </div>
             </div>
 
@@ -69,10 +78,13 @@
               class="absolute bottom-0 -right-1 text-3xl lg:text-6xl 3xl:text-[110px] uppercase pl-3 lg:pl-[30px] lg:translate-y-7 max-w-56 md:max-w-[600px] text-left pt-3 lg:pt-[30px]"
               :class="fragmentColor"
             >
-              <div
-                v-html="data[carousel?.data?.currentSlide.value]?.title"
-                class="text-[#D9D9D9] leading-none lg:leading-[120px]"
-              ></div>
+              <transition name="fade" mode="out-in">
+                <div
+                  :key="carousel?.data?.currentSlide.value"
+                  v-html="data[carousel?.data?.currentSlide.value]?.title"
+                  class="text-[#D9D9D9] leading-none lg:leading-[120px]"
+                ></div>
+              </transition>
             </div>
           </div>
 
@@ -143,6 +155,7 @@ const carousel = ref(null);
 
 .carousel__viewport > .carousel__track {
   height: 100% !important;
+  gap: 0px !important;
 }
 
 .carousel__track > .carousel__slide {
@@ -199,5 +212,13 @@ const carousel = ref(null);
 
 .carousel__pagination-button--active::after {
   background-color: #ff0000 !important;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>

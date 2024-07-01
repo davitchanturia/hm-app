@@ -6,7 +6,7 @@
       clients
     </div>
 
-    <div class="w-full hidden md:block">
+    <div class="w-full hidden md:block px-5">
       <div class="mt-10">
         <InfiniteCarousel direction="ltr" />
       </div>

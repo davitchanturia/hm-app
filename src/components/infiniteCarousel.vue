@@ -6,11 +6,13 @@
     transition="2500"
     :dir="direction"
   >
-    <slide v-for="client in 12" :key="slide">
-      <img
-        :src="`/src/assets/images/our-clients/client-${client}.svg`"
-        alt="client 1"
-      />
+    <slide v-for="client in 12" :key="client">
+      <div class="px-5">
+        <img
+          :src="`/src/assets/images/our-clients/client-${client}.svg`"
+          alt="client 1"
+        />
+      </div>
     </slide>
   </carousel>
 </template>
