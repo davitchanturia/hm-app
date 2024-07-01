@@ -4,7 +4,7 @@ export const projectCarouselData = [
     title: 'CITY MALL',
     image: '/src/assets/images/our-project/slide-01.png',
     brief:
-      '<span>City Mall is a shopping <br /> destination that brings people together from all walks of life.</span>',
+      '<span>City Mall is a shopping destination that brings people together from all walks of life.</span>',
     text: '<span>To help visitors find precisely what they are looking for, we doubled down on multiple arrows in the original symbol, updated and expanded them into a navigation-friendly design system. <br /> <br /> <br /> Typography also got a bold upgrade integrating a custom Georgian adaptation of Pangram typeface.</span>',
   },
 

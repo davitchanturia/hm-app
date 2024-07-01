@@ -1,6 +1,9 @@
 <template>
   <div class="flex justify-between items-center">
-    <div class="font-MangoGrotesqueBold text-4xl" :class="`text-${color}`">
+    <div
+      class="font-MangoGrotesqueBold text-[22px] sm:text-4xl"
+      :class="`text-${color}`"
+    >
       0{{ currentSlide }}
     </div>
 
