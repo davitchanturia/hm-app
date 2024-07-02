@@ -218,7 +218,8 @@ const carousel = ref(null);
 .fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.fade-enter-from, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
