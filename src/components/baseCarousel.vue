@@ -1,15 +1,15 @@
 <template>
   <div
-    class="flex flex-col-reverse lg:flex-row items-start gap-14 px-5 md:px-9 py-12 h-full"
+    class="flex flex-col-reverse xl:flex-row items-start gap-14 px-5 md:px-9 py-12 h-full"
   >
     <transition name="fade" mode="out-in">
       <div
         v-if="gridCarousel"
-        class="w-full lg:w-1/2 mt-[10px] h-full"
+        class="w-full xl:w-1/2 mt-[10px] h-full"
         :key="carousel?.data?.currentSlide.value"
       >
         <div
-          class="text-[#D9D9D9] font-InterTightSemiBold lg:text-[32px] 3xl:text-[44px] font-semibold leading-none lg:leading-[47px] h-full flex flex-col gap-10 lg:gap-0 lg:justify-between"
+          class="text-[#D9D9D9] font-InterTightSemiBold lg:text-[32px] 3xl:text-[44px] font-semibold leading-none lg:leading-[47px] h-full flex flex-col gap-10 xl:gap-0 xl:justify-between"
         >
           <div
             v-html="data[carousel?.data?.currentSlide.value]?.brief"
@@ -24,7 +24,7 @@
     </transition>
 
     <div
-      :class="gridCarousel ? 'w-full lg:w-1/2' : 'w-full'"
+      :class="gridCarousel ? 'w-full xl:w-1/2' : 'w-full'"
       class="carouselGrid"
       style="height: 100% !important"
     >
@@ -34,7 +34,7 @@
             <img :src="slide.image" class="w-full h-full object-cover" />
             <div
               v-if="!gridCarousel"
-              class="absolute top-36 md:bottom-5 left-5 pr-10 w-full lg:w-1/2 max-w-[800px] text-left font-InterTightLight text-base font-light"
+              class="absolute top-36 md:bottom-5 left-5 pr-10 w-full xl:w-1/2 max-w-[800px] text-left font-InterTightLight text-base font-light"
               v-html="slide.text"
             ></div>
           </div>
@@ -60,14 +60,14 @@
               </div>
 
               <div
-                class="text-3xl lg:text-6xl 3xl:text-[110px] uppercase pl-3 lg:pl-[30px] lg:translate-y-7 text-left pt-3 lg:pt-[30px] max-w-40 md:max-w-[400px]"
+                class="text-[30px] lg:text-[60px] 3xl:text-[110px] 3xl:leading-none uppercase pl-3 lg:pl-[30px] translate-y-2 lg:translate-y-5 text-left pt-3 lg:pt-[30px] max-w-40 md:max-w-[400px]"
                 :class="fragmentColor"
               >
                 <transition name="fade" mode="out-in">
                   <div
                     :key="carousel?.data?.currentSlide.value"
                     v-html="data[carousel?.data?.currentSlide.value]?.title"
-                    class="text-[#D9D9D9] leading-none lg:leading-[120px]"
+                    class="text-[#D9D9D9] pr-1"
                   ></div>
                 </transition>
               </div>
@@ -75,14 +75,14 @@
 
             <div
               v-else
-              class="absolute bottom-0 -right-1 text-3xl lg:text-6xl 3xl:text-[110px] uppercase pl-3 lg:pl-[30px] lg:translate-y-7 max-w-56 md:max-w-[600px] text-left pt-3 lg:pt-[30px]"
+              class="absolute bottom-0 -right-1 text-[30px] lg:text-[60px] 3xl:text-[110px] 3xl:leading-none uppercase pl-3 lg:pl-[30px] translate-y-2 lg:translate-y-5 max-w-56 md:max-w-[600px] text-left pt-3 lg:pt-[30px]"
               :class="fragmentColor"
             >
               <transition name="fade" mode="out-in">
                 <div
                   :key="carousel?.data?.currentSlide.value"
                   v-html="data[carousel?.data?.currentSlide.value]?.title"
-                  class="text-[#D9D9D9] leading-none lg:leading-[120px]"
+                  class="text-[#D9D9D9] pr-1"
                 ></div>
               </transition>
             </div>
